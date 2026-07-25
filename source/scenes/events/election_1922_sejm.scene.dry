@@ -174,21 +174,21 @@ if (window && d3) {
     if (screenWidth < width - 50) {
         width = screenWidth - 50; 
         height = width;
-        document.getElementById("reichstag").style.height = screenWidth/2 + "px";
+        document.getElementById("sejm").style.height = screenWidth/2 + "px";
     } 
 
     var parliament = d3.parliament();
     parliament.width(width).height(height).innerRadiusCoef(0.4);
     parliament.enter.fromCenter(true).smallToBig(true);
     parliament.exit.toCenter(false).bigToSmall(true);
-    d3.select("#reichstag").datum(data).call(parliament);
+    d3.select("#sejm").datum(data).call(parliament);
 }
 !}
 go-to: pm_appoint
 
 = Election results
 
-{!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
+{!<svg id="sejm" style="width: 500px; height: 250px;"> </svg>!}
 
 {!<table>!} 
 {!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
@@ -231,22 +231,38 @@ skibidi
 - @nogov
 
 @pps_pm
-title: President [+ president +] entrusts the PPS to form a government.
-go-to: coalition_menu
-
-@peasants_pm
-title: President [+ president +] will entrust a Peasant Party to form a government.
+title: President [+ president +] appoints the PPS to form a government.
+unavailable-subtitle: President [+ president +] isn't looking to appoint a PPS prime minister.
+choose-if: pps_attempt < 1 and (pps_sj*president_relations)/zln_sj >= 30
 go-to: coalition_menu
 
 @zln_pm
-title: President [+ president +] entrusts the ZLN to form a government.
-view-if: zln_attempt < 1 and (president_relation <= 59 or (zln_sj > pps_sj or zln_sj > (psl_w_sj + psl_p_sj)))
+title: President [+ president +] appoints the ZLN to form a government.
+view-if: zln_attempt < 1 and (president_relation <= 59 or (zln_sj > (pps_sj + psl_w_sj) or zln_sj > (psl_w_sj + psl_p_sj)))
 go-to: zln_menu
 
-@nogov
+@peasants_pm
+title: President [+ president +] will appoint a Peasant Party to form a government.
+view-if: zln_attempt >= 1 or ((psl_w_sj + psl_p_sj) >= zln_sj)
+
+- @psl_w_pm
+- @psl_p_pm
+
+@psl_w_pm
+title: President [+ president +] appoints the PSL-W to form a government.
+view-if: psl_w_attempt < 1 and (psl_w_sj > psl_p_sj or psl_p_attempt >= 1)
+go-to: psl_w_menu
+
+@psl_p_pm
+title: President [+ president +] appoints the PSL-P to form a government.
+view-if: psl_p_attempt < 1 and (psl_p_sj >= psl_w_sj or psl_w_attempt >= 1)
+go-to: psl_p_menu
+
+@nogov1
 title: The Sejm is paralyzed.
 view-if: zln_attempt >= 1 and pps_attempt >= 1 and psl_w_attempt >= 1 and psl_p_attempt >= 1
 on-arrival: failed_forming = 1
+go-to: deadlocked_sejm.caretaker if Q.next_election_time <= 3
 
 The Sejm finds that it cannot establish a mandate, for this reason, the members will reconvene next month for another attempt.
 
