@@ -2,8 +2,8 @@ title: Senat Elections
 new-page: true
 tags: event
 priority: -2
-view-if: sejm_seen == 0
-on-departure: sejm_seen = 1
+view-if: senat_seen == 0
+on-departure: senat_seen = 1
 face-image: img/fl_pl.webp
 
 = Elections, [+ month : month +] [+ year +]
@@ -43,17 +43,17 @@ Q.otherright_sn_votes = Q.otherright_votes*senat_adjustment_factor.otherright;
 Q.total_votes_sn = Q.npr_sn_votes + Q.pps_sn_votes + Q.npr_sn_votes + Q.psl_l_sn_votes + Q.psl_w_sn_votes + Q.psl_p_sn_votes + Q.bmn_sn_votes + Q.zln_sn_votes + Q.pschd_sn_votes + Q.other_sn_votes + Q.otherright_sn_votes
 
 if (Q.total_votes_sn > 0) {
-    Q.kpp_sn_votes = (Q.kpp_sn_votes/Q.total_votes_sn)*100;
-    Q.pps_sn_votes = (Q.pps_sn_votes/Q.total_votes_sn)*100;
-    Q.npr_sn_votes = (Q.npr_sn_votes/Q.total_votes_sn)*100;
-    Q.psl_l_sn_votes = (Q.psl_l_sn_votes/Q.total_votes_sn)*100;
-    Q.psl_p_sn_votes = (Q.psl_w_sn_votes/Q.total_votes_sn)*100;
-    Q.psl_w_sn_votes = (Q.psl_p_sn_votes/Q.total_votes_sn)*100;
-    Q.bmn_sn_votes = (Q.bmn_sn_votes/Q.total_votes_sn)*100;
-    Q.zln_sn_votes = (Q.zln_sn_votes/Q.total_votes_sn)*100;
-    Q.pschd_sn_votes = (Q.pschd_sn_votes/Q.total_votes_sn)*100;
-    Q.other_sn_votes = (Q.other_sn_votes/Q.total_votes_sn)*100;
-    Q.otherright_sn_votes = (Q.otherright_sn_votes/Q.total_votes_sn)*100;
+    Q.kpp_sn_votes = Math.round((Q.kpp_sn_votes/Q.total_votes_sn)*100);
+    Q.pps_sn_votes = Math.round((Q.pps_sn_votes/Q.total_votes_sn)*100);
+    Q.npr_sn_votes = Math.round((Q.npr_sn_votes/Q.total_votes_sn)*100);
+    Q.psl_l_sn_votes = Math.round((Q.psl_l_sn_votes/Q.total_votes_sn)*100);
+    Q.psl_p_sn_votes = Math.round((Q.psl_w_sn_votes/Q.total_votes_sn)*100);
+    Q.psl_w_sn_votes = Math.round((Q.psl_p_sn_votes/Q.total_votes_sn)*100);
+    Q.bmn_sn_votes = Math.round((Q.bmn_sn_votes/Q.total_votes_sn)*100);
+    Q.zln_sn_votes = Math.round((Q.zln_sn_votes/Q.total_votes_sn)*100);
+    Q.pschd_sn_votes = Math.round((Q.pschd_sn_votes/Q.total_votes_sn)*100);
+    Q.other_sn_votes = Math.round((Q.other_sn_votes/Q.total_votes_sn)*100);
+    Q.otherright_sn_votes = Math.round((Q.otherright_sn_votes/Q.total_votes_sn)*100);
 }
 
 var new_party_sum = 0;
@@ -77,7 +77,7 @@ for (var party of Q.parties) {
 
 Q.left_sn = Q.kpp_sn + Q.pps_sn + (Q.npr_sn*0.5) + Q.psl_l_sn + (Q.psl_w_sn*0.3);
 Q.center_sn = (Q.psl_w_sn*0.7) + (Q.psl_p_sn*0.6) + Q.bmn_sn + Q.other_sn;
-Q.rifht_sn = (Q.npr_sn*0.5) + Q.otherright_sn + Q.zln_sn + Q.pschd_sn + (Q.psl_p_sn*0.4);
+Q.right_sn = (Q.npr_sn*0.5) + Q.otherright_sn + Q.zln_sn + Q.pschd_sn + (Q.psl_p_sn*0.4);
 !}
 on-display: {!
 data = [
