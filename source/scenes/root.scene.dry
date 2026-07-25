@@ -308,17 +308,6 @@ Q.pschd_sj = 0;
 Q.otherright_sj = 0;
 Q.other_sj = 17.8;
 
-Q.old_pps_sj = 8.9;
-Q.old_npr_sj = 8.1;
-Q.old_psl_l_sj = 3.0;
-Q.old_psl_w_sj = 15.0;
-Q.old_psl_p_sj = 11.7;
-Q.old_bmn_sj = 0;
-Q.old_zln_sj = 35.5;
-Q.old_pschd_sj = 0;
-Q.old_otherright_sj = 0;
-Q.old_other_sj = 17.8;
-
 // array of objects of the form {date: Date(), spd: 10, kpd: 12, ...} for each election
 Q.election_records = [];
 // party support records for every month
@@ -507,8 +496,8 @@ Q.no_majority_elections = 0;
 // elections are not on a timer, but rather there is an indicator for whether you're in an electoral cycle.
 Q.in_election = 1;
 Q.next_election_year = 1922;
-Q.next_election_month = 11;
-Q.next_election_time = 11;
+Q.next_election_month = 3;
+Q.next_election_time = 3;
 // government affairs timers
 Q.agricultural_policy_timer = 0;
 Q.domestic_enemies_timer = 0;
