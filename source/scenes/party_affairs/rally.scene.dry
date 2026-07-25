@@ -76,7 +76,7 @@ Mass rallies are a common feature of social democratic life, especially in the l
 - @welfare: Sozialpolitik - the maintenance and expansion of social welfare programs.
 - @democracy: Expanding our nascent democracy and defending it against dictatorship and fascism.
 - @pacifism: Opposing war, nationalism, and militarism at all costs.
-- @wtb: Support the WTB plan!
+- @nationalism: Defending polish nationalism and military dignity.
 - @local: A mixture of various local and national concerns that resonate most with the audience.
 - @easy_discard
 
@@ -106,14 +106,9 @@ Our speakers denounce the military establishment and all the spending entering t
 [? if pacifism < 3 : Given the volume of nationalist indoctrination in our society, it is difficult to argue so vehemently against the military. ?]
 [? if pacifism >= 3 : Since we have consistently made pacifism a theme of our campaign, the workers are enthusiastic about our message. ?]
 
-@wtb
-view-if: wtb_adopted = 1
-choose-if: return_to_normalcy = 0
-unavailable-subtitle: The economic crisis is largely over now, and the public is no longer interested in hearing about it.
-on-arrival: wtb_support += 1; workers_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); rural_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 3*(1-dissent);
+@nationalism
 
-The WTB plan has become a popular rallying cry for our party. The workers are eager to go back to work, and that is exactly what the plan promises.
-
+wip
 
 @local
 on-arrival: workers_spd += 3*(1-dissent); old_middle_spd += 1*(1-dissent); new_middle_spd += 2*(1-dissent); unemployed_spd += 3*(1-dissent);
