@@ -245,7 +245,8 @@ skibidi
 @pps_pm
 title: President [+ president +] appoints the PPS to form a government.
 unavailable-subtitle: President [+ president +] isn't looking to appoint a PPS prime minister.
-choose-if: pps_attempt < 1 and (pps_sj*president_relations)/zln_sj >= 30
+choose-if: (pps_attempt < 1 and (pps_sj*president_relations)/zln_sj >= 30) or pps_sj == 1
+on-arrival: coalition_mandate += pps_sj
 go-to: coalition_menu
 
 @zln_pm
@@ -274,7 +275,9 @@ go-to: psl_p_menu
 title: The Sejm is paralyzed.
 view-if: zln_attempt >= 1 and pps_attempt >= 1 and psl_w_attempt >= 1 and psl_p_attempt >= 1
 on-arrival: failed_forming = 1
-go-to: deadlocked_sejm.caretaker if Q.next_election_time <= 3
+go-to: Q.next_election_time <= 3
+
+// Temporarily removed deadlock.caretaker to test it
 
 The Sejm finds that it cannot establish a mandate, for this reason, the members will reconvene next month for another attempt.
 
@@ -304,10 +307,104 @@ wip
 
 @coalition_menu
 
-We can pick any parties to form our government.
+We can pick any parties to form our government. No conditions yet WIP just gimme opinion sir
 
 - #coalition_1922
 - #drop_coalition_1922
+
+@kpp
+title: KPP
+tags: coalition_1922
+choose-if: kpp_support == 0
+view-if: kpp_support == 0
+
+Should they tolerate or be in government?
+
+- @kppgov
+- @kpptol
+
+@kppgov
+title: In government.
+on-arrival: coalition_mandate += kpp_sj; kpp_in_government = 1; kpp_support = 1
+go-to: coalition_menu
+
+@kpptol
+title: Ask for their toleration.
+on-arrival: coalition_mandate += kpp_sj; kpp_support = 1
+go-to: coalition_menu
+
+@npr
+title: NPR
+tags: coalition_1922
+choose-if: npr_support == 0
+view-if: npr_support == 0
+
+Should they tolerate or be in government?
+
+- @nprgov
+- @nprtol
+
+@nprgov
+title: In government.
+on-arrival: coalition_mandate += npr_sj; npr_in_government = 1; npr_support = 1
+go-to: coalition_menu
+
+@nprtol
+title: Ask for their toleration.
+on-arrival: coalition_mandate += npr_sj; npr_support = 1
+go-to: coalition_menu
+
+@psl_l
+title: PSL-L
+tags: coalition_1922
+choose-if: psl_l_support == 0
+view-if: psl_l_support == 0
+
+Should they tolerate or be in government?
+
+- @psl_lgov
+- @psl_ltol
+
+@psl_lgov
+title: In government.
+on-arrival: coalition_mandate += psl_l_sj; psl_l_in_government = 1; psl_l_support = 1
+go-to: coalition_menu
+
+@psl_ltol
+title: Ask for their toleration.
+on-arrival: coalition_mandate += psl_l_sj; psl_l_support = 1
+go-to: coalition_menu
+
+@psl_w
+title: PSL-W
+tags: coalition_1922
+choose-if: psl_w_support == 0
+view-if: psl_w_support == 0
+
+Should they tolerate or be in government?
+
+- @psl_wgov
+- @psl_wtol
+
+@psl_wgov
+title: In government.
+on-arrival: coalition_mandate += psl_w_sj; psl_w_in_government = 1; psl_w_support = 1
+go-to: coalition_menu
+
+@psl_wtol
+title: Ask for their toleration.
+on-arrival: coalition_mandate += psl_w_sj; psl_w_support = 1
+go-to: coalition_menu
+
+@finished
+title: The Coalition is finalized.
+subtitle: The government has a [+ coalition_mandate +]/444 seat mandate.
+unavailable-subtitle: 223 Majority required. The government currently has a [+ coalition_mandate +]/444 mandate, we may require more parties in or tolerating the government.
+choose-if: coalition_mandate >= 223
+
+@test
+title: test
+tags: drop_coalition_1922
 
 - @spd_majority
 
