@@ -271,7 +271,7 @@ title: President [+ president +] appoints the PSL-P to form a government.
 view-if: psl_p_attempt < 1 and (psl_p_sj >= psl_w_sj or psl_w_attempt >= 1)
 go-to: psl_p_menu
 
-@nogov1
+@nogov
 title: The Sejm is paralyzed.
 view-if: zln_attempt >= 1 and pps_attempt >= 1 and psl_w_attempt >= 1 and psl_p_attempt >= 1
 on-arrival: failed_forming = 1
@@ -460,6 +460,7 @@ go-to: coalition_menu
 
 @finished
 title: The Coalition is finalized.
+tags: coalition_1922
 subtitle: The government has a [+ coalition_mandate +]/444 seat mandate.
 unavailable-subtitle: 223 Majority required. The government currently has a [+ coalition_mandate +]/444 mandate, we may require more parties in or tolerating the government.
 choose-if: coalition_mandate >= 223
