@@ -275,7 +275,6 @@ go-to: psl_p_menu
 title: The Sejm is paralyzed.
 view-if: zln_attempt >= 1 and pps_attempt >= 1 and psl_w_attempt >= 1 and psl_p_attempt >= 1
 on-arrival: failed_forming = 1
-go-to: Q.next_election_time <= 3
 
 // Temporarily removed deadlock.caretaker to test it
 
@@ -394,6 +393,69 @@ go-to: coalition_menu
 @psl_wtol
 title: Ask for their toleration.
 on-arrival: coalition_mandate += psl_w_sj; psl_w_support = 1
+go-to: coalition_menu
+
+@psl_p
+title: PSL-P
+tags: coalition_1922
+choose-if: psl_p_support == 0
+view-if: psl_p_support == 0
+
+Should they tolerate or be in government?
+
+- @psl_pgov
+- @psl_ptol
+
+@psl_pgov
+title: In government.
+on-arrival: coalition_mandate += psl_p_sj; psl_p_in_government = 1; psl_p_support = 1
+go-to: coalition_menu
+
+@psl_ptol
+title: Ask for their toleration.
+on-arrival: coalition_mandate += psl_p_sj; psl_p_support = 1
+go-to: coalition_menu
+
+@bmn
+title: BMN
+tags: coalition_1922
+choose-if: bmn_support == 0
+view-if: bmn_support == 0
+
+Should they tolerate or be in government?
+
+- @kppgov
+- @kpptol
+
+@bmngov
+title: In government.
+on-arrival: coalition_mandate += kpp_sj; bmn_in_government = 1; bmn_support = 1
+go-to: coalition_menu
+
+@bmntol
+title: Ask for their toleration.
+on-arrival: coalition_mandate += bmn_sj; bmn_support = 1
+go-to: coalition_menu
+
+@zln
+title: ZLN
+tags: coalition_1922
+choose-if: zln_support == 0
+view-if: zln_support == 0
+
+Should they tolerate or be in government?
+
+- @zlngov
+- @zlntol
+
+@zlngov
+title: In government.
+on-arrival: coalition_mandate += zln_sj; zln_in_government = 1; zln_support = 1
+go-to: coalition_menu
+
+@zlntol
+title: Ask for their toleration.
+on-arrival: coalition_mandate += zln_sj; zln_support = 1
 go-to: coalition_menu
 
 @finished
