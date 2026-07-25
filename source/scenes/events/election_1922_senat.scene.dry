@@ -2,8 +2,8 @@ title: Senat Elections
 new-page: true
 tags: event
 priority: -2
-view-if: (year = next_election_year and month >= next_election_month) or (year > next_election_year)
-on-departure: month_actions += 1; in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; papen_chancellor_timer = 4;
+view-if: sejm_seen == 0
+on-departure: sejm_seen = 1
 face-image: img/fl_pl.webp
 
 = Elections, [+ month : month +] [+ year +]
@@ -72,6 +72,131 @@ for (var party of Q.parties) {
                    : Q['change_' + party + '_sn'] < 0 
                      ? '<img src="img/arrowdown.png"> ' 
                      : '<img src="img/steady.png"> ';
-    Q['str_change_' + party] = sign + Q['change_' + party + '_sn'].toFixed(1);
+    Q['str_change_' + party + '_sn'] = sign + Q['change_' + party + '_sn'].toFixed(1);
 };
+
+Q.left_sn = Q.kpp_sn + Q.pps_sn + (Q.npr_sn*0.5) + Q.psl_l_sn + (Q.psl_w_sn*0.3);
+Q.center_sn = (Q.psl_w_sn*0.7) + (Q.psl_p_sn*0.6) + Q.bmn_sn + Q.other_sn;
+Q.rifht_sn = (Q.npr_sn*0.5) + Q.otherright_sn + Q.zln_sn + Q.pschd_sn + (Q.psl_p_sn*0.4);
 !}
+on-display: {!
+data = [
+    {
+        "id": "kpp",
+        "legend": "KPP",
+        "name": "KPP",
+        "seats": Math.round(Q.kpp_sn*1.11),
+    },
+    {
+        "id": "pps",
+        "legend": "PPS",
+        "name": "PPS",
+        "seats": Math.round(Q.pps_sn*1.11),
+    },
+    {
+        "id": "npr",
+        "legend": "NPR",
+        "name": "NPR",
+        "seats": Math.round(Q.npr_sn*1.11),
+    },
+    {
+        "id": "psl_l",
+        "legend": "PSL-L",
+        "name": "PSL-L",
+        "seats": Math.round(Q.psl_l_sn*1.11),
+    },
+    {
+        "id": "psl_w",
+        "legend": "PSL-W",
+        "name": "PSL-W",
+        "seats": Math.round(Q.psl_w_sn*1.11),
+    },
+    {
+        "id": "psl_p",
+        "legend": "PSL-P",
+        "name": "PSL-P",
+        "seats": Math.round(Q.psl_p_sn*1.11),
+    },
+    {
+        "id": "bmn",
+        "legend": "BMN",
+        "name": "BMN",
+        "seats": Math.round(Q.bmn_sn*1.11),
+    },
+    {
+        "id": "other",
+        "legend": "Other",
+        "name": "Other",
+        "seats": Math.round(Q.other_sn*1.11),
+    },
+    {
+        "id": "otherright",
+        "legend": "Other Parties",
+        "name": "Other Parties",
+        "seats": Math.round(Q.otherright_sn*1.11),
+    },
+    {
+        "id": "pschd",
+        "legend": "PSChD",
+        "name": "PSChD",
+        "seats": Math.round(Q.pschd_sn*1.11),
+    },
+    {
+        "id": "zln",
+        "legend": "ZLN",
+        "name": "ZLN",
+        "seats": Math.round(Q.zln_sn*1.11),
+    },
+];
+
+if (window && d3) {
+    var width = 500; 
+    var height = 500;
+    var screenWidth = document.getElementById('content').offsetWidth;
+    if (screenWidth < width - 50) {
+        width = screenWidth - 50; 
+        height = width;
+        document.getElementById("senat").style.height = screenWidth/2 + "px";
+    } 
+
+    var parliament = d3.parliament();
+    parliament.width(width).height(height).innerRadiusCoef(0.4);
+    parliament.enter.fromCenter(true).smallToBig(true);
+    parliament.exit.toCenter(false).bigToSmall(true);
+    d3.select("#senat").datum(data).call(parliament);
+}
+!}
+
+= Election results
+
+{!<svg id="senat" style="width: 500px; height: 250px;"> </svg>!}
+
+{!<table>!} 
+{!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#C62828; outline: 2px; outline-style: solid;'> </div> !} **PPS:** {!</td><td>!} **[+ pps_sn +]%** {!</td><td>!} **[+ str_change_pps_sn +]** {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#890000'> </div> !}KPP: {!</td><td>!} [+ kpp_sn +]% {!</td><td>!} [+ str_change_kpp_sn +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#841839'> </div> !}NPR: {!</td><td>!} [+ npr_sn +]% {!</td><td>!} [+ str_change_npr_sn +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#80FF00'> </div> !}PSL-L: {!</td><td>!} [+ psl_l_sn +]% {!</td><td>!} [+ str_change_psl_l_sn +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#179900'> </div> !}PSL-W: {!</td><td>!} [+ psl_w_sn +]% {!</td><td>!} [+ str_change_psl_w_sn +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#3A6538'> </div> !}PSL-P: {!</td><td>!} [+ psl_p_sn +]% {!</td><td>!} [+ str_change_psl_p_sn +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#E3AF34'> </div> !}BMN: {!</td><td>!} [+ bmn_sn +]% {!</td><td>!} [+ str_change_bmn_sn +] {!</td></tr>!}
+
+{!<tr><td>- <div class="box" style='background-color:#302060'> </div> !}ChZJN: {!</td><td>!} volkgemeinschaff% {!</td><td>!} meinkampferbund {!</td></tr>!}
+
+{!<tr><td style="padding-left:26px;"><div class="box" style='background-color:#312E99'></div> !}ZLN: {!</td><td>!} [+ zln_sn +]% {!</td><td>!} [+ str_change_zln_sn +] {!</td></tr>!}
+
+{!<tr><td style="padding-left:26px;"><div class="box" style='background-color:#316EAA'></div> !}PSChD: {!</td><td>!} [+ pschd_sn +]% {!</td><td>!} [+ str_change_pschd_sn +] {!</td></tr>!}
+
+{!<tr><td style="padding-left:26px;"><div class="box" style='background-color:#A0A0E0'></div> !}Other parties: {!</td><td>!} [+ otherright_sn +]% {!</td><td>!} [+ str_change_otherright_sn +] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#909090'> </div> !}Others: {!</td><td>!} [+ other_sn +]% {!</td><td>!} [+ str_change_other_sn +] {!</td></tr>!}
+
+{!</table>!}
+
+[? if (right_sn > left_sn) and (right_sn > center_sn) : The Senat is dominated by the right. ?][? if (left_sn > right_sn) and (left_sn > center_sn) : The Senat is dominated by the left. ?][? if (center_sn >= right_sn) and (center_sn >= left_sn) : The Senat is dominated by the centrists. ?]
