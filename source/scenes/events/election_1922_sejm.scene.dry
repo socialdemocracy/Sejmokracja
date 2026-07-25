@@ -39,6 +39,8 @@ Q.leverage = Q.pps_sj;
 
 // Reset government and ministers
 
+Q.senat_seen = 0;
+
 Q.coalition_dissent = 0;
 Q.other_coalition_dissent = 0;
 
