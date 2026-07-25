@@ -245,7 +245,7 @@ skibidi
 @pps_pm
 title: President [+ president +] appoints the PPS to form a government.
 unavailable-subtitle: President [+ president +] isn't looking to appoint a PPS prime minister.
-choose-if: (pps_attempt < 1 and (pps_sj*president_relation)/zln_sj >= 40) or psl_w_attempt == 1 and psl_p_attempt == 1
+choose-if: pps_attempt < 1 and (pps_sj*president_relation)/zln_sj >= 40 or psl_w_attempt == 1 and psl_p_attempt == 1
 on-arrival: coalition_mandate += pps_sj
 go-to: coalition_menu
 
