@@ -4,7 +4,7 @@ is-card: true
 tags: party_affairs
 view-if: shuffle_leadership_timer = 0 and difficulty >= 0
 on-arrival: month_activities += 1; shuffle_leadership_timer = 8;
-card-image: img/vorwarts_2.jpg
+card-image: img/Logo_PPS.jpg
 go-to: rm_main
 
 Changing the leadership of the party is painful, but perhaps it is necessary to adapt to changing circumstances.
@@ -21,7 +21,7 @@ Removing advisors will increase dissent from their faction of the party, while s
 
 @rm_main
 title: Remove advisors.
-tags: center_advisor, left_advisor, reformist_advisor, labor_advisor, neorev_advisor, nonfactional_advisor 
+tags: center_advisor, left_advisor, reformist_advisor, conservative_advisor, nonfactional_advisor 
 frequency: 1
 
 - #remove_advisor
@@ -32,6 +32,14 @@ title: Stop changing advisors.
 go-to: root
 tags: remove_advisor
 
+@remove_daszynski
+title: Remove Daszyński
+view-if: daszynski_advisor = 1
+tags: remove_dvisor
+on-arrival: daszynski_advisor = 0; center_dissent += 5; n_advisors -= 1
+go-to: rm_main
+
+Daszyński has been removed as an advisor. The Centrist faction disapproves.
 
 @remove_hilferding
 title: Remove Hilferding
@@ -300,6 +308,7 @@ frequency: 1
 - @remove_none: Stop changing advisors.
 
 @centrist
+subtitle: Reduces dissent regularly for each advisor appointed due to trust in leadership.
 view-if: n_advisors < 3
 
 - #center_advisor
@@ -328,6 +337,18 @@ view-if: neorevisionism > 0 and n_advisors < 3
 view-if: n_advisors < 3
 
 - #nonfactional_advisor
+
+@add_daszynski
+title: Ignacy Daszyński
+subtitle: Ignacy Daszyński is a prominent leader of the PPS and one of the most experienced Sejm Representative. {!<br><br>!}[? if difficulty < 0 : Actions - Against Right and Left, Defending Toleration, Fiscal Policy, Economic Democracy ?]
+is-card: true
+card-image: img/portraits/DaszyńskiIgnacy.jpg
+tags: center_advisor
+view-if: daszynski_advisor = 0 and n_advisors < 3 and centrists_resign = 0
+on-arrival: daszynski_advisor = 1; n_advisors += 1
+go-to: advisor_menu
+
+Ignacy Daszyński is now an advisor.
 
 @add_hilferding
 title: Rudolf Hilferding
