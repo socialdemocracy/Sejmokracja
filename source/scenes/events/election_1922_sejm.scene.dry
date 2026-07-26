@@ -314,10 +314,16 @@ We can pick any parties to form our government. No conditions yet WIP just gimme
 - #drop_coalition_1922
 
 @kpp
-title: KPP
+title: Invite the KPP.
+unavailable-subtitle: [? kpp_relation <= 64 : Our relations are too low. ?][? left_strength <= 29 : The Left doesn't have substantial influence to allow this arrangement. ?][? psl_l_in_government : The KPP isn't willing to support the PSL-L ?][? psl_w_in_government : The KPP isn't willing to support the PSL-W ?][? psl_p_in_government : The KPP isn't willing to support the PSL-P ?]
 tags: coalition_1922
-choose-if: kpp_support == 0
+choose-if: kpp_support == 0 kpp_relation >= 65 and left_strength >= 30 and psl_l_in_government == 0 and psl_w_in_government == 0; psl_p_in_government == 0
 view-if: kpp_support == 0
+go-to: kppconcern
+
+@kppconcern
+
+The KPP being in the government is sure to cause an outrage
 
 Should they tolerate or be in government?
 
@@ -335,7 +341,7 @@ on-arrival: coalition_mandate += kpp_sj; kpp_support = 1
 go-to: coalition_menu
 
 @npr
-title: NPR
+title: Invite the NPR.
 tags: coalition_1922
 choose-if: npr_support == 0
 view-if: npr_support == 0
@@ -356,7 +362,7 @@ on-arrival: coalition_mandate += npr_sj; npr_support = 1
 go-to: coalition_menu
 
 @psl_l
-title: PSL-L
+title: Invite the PSL-L.
 tags: coalition_1922
 choose-if: psl_l_support == 0
 view-if: psl_l_support == 0
@@ -377,7 +383,7 @@ on-arrival: coalition_mandate += psl_l_sj; psl_l_support = 1
 go-to: coalition_menu
 
 @psl_w
-title: PSL-W
+title: Invite the PSL-W.
 tags: coalition_1922
 choose-if: psl_w_support == 0
 view-if: psl_w_support == 0
@@ -398,12 +404,27 @@ on-arrival: coalition_mandate += psl_w_sj; psl_w_support = 1
 go-to: coalition_menu
 
 @psl_p
-title: PSL-P
+title: Invite the PSL-P.
 tags: coalition_1922
 choose-if: psl_p_support == 0
-view-if: psl_p_support == 0
+view-if: psl_p_support == 0; lanckorona_pact == 0
 
 Should they tolerate or be in government?
+
+- @psl_pgov
+- @psl_ptol
+
+@psl_p_lanckorona
+title: Gather the support of the PSL-P?
+subtitle: Their support would be unlikely after the Lanckorona Pact.
+unavailable-subtitle: WIP
+tags: coalition_1922
+choose-if: psl_p_support == 100
+view-if: psl_p_support == 0; lanckorona_pact == 1
+
+Our delegates are in touch with them. They are currently discussing on how the PSL-P would participate in the government.
+
+Now that we have settled it we have to decide on their position in the government.
 
 - @psl_pgov
 - @psl_ptol
@@ -419,7 +440,8 @@ on-arrival: coalition_mandate += psl_p_sj; psl_p_support = 1
 go-to: coalition_menu
 
 @bmn
-title: BMN
+title: Invite the BMN.
+unavailable-subtitle: [? bmn_relation : Our relations are too low. ?][? psl_p_in_government : The BMN isn't willing to support the PSL-P?]
 tags: coalition_1922
 choose-if: bmn_support == 0
 view-if: bmn_support == 0
@@ -431,7 +453,8 @@ Should they tolerate or be in government?
 
 @bmngov
 title: In government.
-on-arrival: coalition_mandate += kpp_sj; bmn_in_government = 1; bmn_support = 1
+subtitle: Unpopular with the Conservatives in our party.
+on-arrival: conservative_dissent += 10; coalition_mandate += bmn_sj; bmn_in_government = 1; bmn_support = 1
 go-to: coalition_menu
 
 @bmntol
@@ -440,36 +463,68 @@ on-arrival: coalition_mandate += bmn_sj; bmn_support = 1
 go-to: coalition_menu
 
 @zln
-title: ZLN
+title: Invite the ZLN
+unavailable-subtitle: The ZLN would never do this.
 tags: coalition_1922
-choose-if: zln_support == 0
-view-if: zln_support == 0
-
-Should they tolerate or be in government?
-
-- @zlngov
-- @zlntol
-
-@zlngov
-title: In government.
-on-arrival: coalition_mandate += zln_sj; zln_in_government = 1; zln_support = 1
+choose-if: zln_relation == 100
 go-to: coalition_menu
 
-@zlntol
-title: Ask for their toleration.
-on-arrival: coalition_mandate += zln_sj; zln_support = 1
+cheater.
+
+@zln
+title: Invite the PSChd
+unavailable-subtitle: The PSChD would never do this.
+tags: coalition_1922
+choose-if: zln_relation == 100
 go-to: coalition_menu
+
+cheater.
 
 @finished
 title: The Coalition is finalized.
 tags: coalition_1922
-subtitle: The government has a [+ coalition_mandate +]/444 seat mandate.
-unavailable-subtitle: 223 Majority required. The government currently has a [+ coalition_mandate +]/444 mandate, we may require more parties in or tolerating the government.
-choose-if: coalition_mandate >= 223
+subtitle: The government has a [+ coalition_mandate +]/100% seat mandate.
+unavailable-subtitle: 50% Mandate required. The government currently has a [+ coalition_mandate +]/100% mandate, we may require more parties in or tolerating the government.
+choose-if: coalition_mandate >= 50
 
-@test
-title: test
+Finally, the PPS can govern, Polish Socialism has finally been brought again in the Sejm.
+
+@drop_npr
+title: Drop the NPR.
 tags: drop_coalition_1922
+on-arrival: npr_support = 0; npr_in_government = 0; coalition_mandate -= npr_sj
+view-if: npr_support == 1
+go-to: coalition_menu
+
+[? npr_support and npr_in_government : We have decided to drop them in the coalition ?][? npr_support and not npr_in_government : We don't need their support ?]
+
+@drop_psl_l
+title: Drop the PSL-L.
+tags: drop_coalition_1922
+on-arrival: psl_l_support = 0; psl_l_in_government = 0; coalition_mandate -= psl_l_sj
+view-if: psl_l_support == 1
+go-to: coalition_menu
+
+[? psl_l_support and psl_l_in_government : We have decided to drop them in the coalition ?][? psl_l_support and not psl_l_in_government : We don't need their support ?]
+
+@drop_psl_w
+title: Drop the PSL-W.
+tags: drop_coalition_1922
+on-arrival: psl_w_support = 0; psl_w_in_government = 0; coalition_mandate -= psl_w_sj
+view-if: psl_support == 1
+go-to: coalition_menu
+
+[? psl_w_support and psl_w_in_government : We have decided to drop them in the coalition ?][? psl_w_support and not psl_w_in_government : We don't need their support ?]
+
+@drop_bmn
+title: Drop the BMN.
+tags: drop_coalition_1922
+on-arrival: bmn_support = 0; bmn_in_government = 0; coalition_mandate -= bmn_sj; conservative_dissent += 10 if bmn_in_government
+view-if: bmn_support == 1
+go-to: coalition_menu
+
+[? bmn_support and bmn_in_government : We have decided to drop them in the coalition ?][? bmn_support and not bmn_in_government : We don't need their support ?]
+
 
 - @spd_majority
 
