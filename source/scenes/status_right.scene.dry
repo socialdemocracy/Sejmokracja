@@ -1,6 +1,179 @@
 title: Inter-politics
 new-page: true
 is-special: true
+on-display: {!
+data = [
+    {
+        "id": "kpp",
+        "legend": "KPP",
+        "name": "KPP",
+        "seats": Math.round(Q.kpp_sj*4.44),
+    },
+    {
+        "id": "pps",
+        "legend": "PPS",
+        "name": "PPS",
+        "seats": Math.round(Q.pps_sj*4.44),
+    },
+    {
+        "id": "npr",
+        "legend": "NPR",
+        "name": "NPR",
+        "seats": Math.round(Q.npr_sj*4.44),
+    },
+    {
+        "id": "psl_l",
+        "legend": "PSL-L",
+        "name": "PSL-L",
+        "seats": Math.round(Q.psl_l_sj*4.44),
+    },
+    {
+        "id": "psl_w",
+        "legend": "PSL-W",
+        "name": "PSL-W",
+        "seats": Math.round(Q.psl_w_sj*4.44),
+    },
+    {
+        "id": "psl_p",
+        "legend": "PSL-P",
+        "name": "PSL-P",
+        "seats": Math.round(Q.psl_p_sj*4.44),
+    },
+    {
+        "id": "bmn",
+        "legend": "BMN",
+        "name": "BMN",
+        "seats": Math.round(Q.bmn_sj*4.44),
+    },
+    {
+        "id": "other",
+        "legend": "Other",
+        "name": "Other",
+        "seats": Math.round(Q.other_sj*4.44),
+    },
+    {
+        "id": "zln",
+        "legend": "ZLN",
+        "name": "ZLN",
+        "seats": Math.round(Q.zln_sj*4.44),
+    },
+    {
+        "id": "pschd",
+        "legend": "PSChD",
+        "name": "PSChD",
+        "seats": Math.round(Q.pschd_sj*4.44),
+    },
+    {
+        "id": "otherright",
+        "legend": "Other Parties",
+        "name": "Other Parties",
+        "seats": Math.round(Q.otherright_sj*4.44),
+    },
+];
+
+if (window && d3) {
+    var width = 500; 
+    var height = 500;
+    var screenWidth = document.getElementById('content').offsetWidth;
+    if (screenWidth < width - 50) {
+        width = screenWidth - 50; 
+        height = width;
+        document.getElementById("sejm").style.height = screenWidth/2 + "px";
+    } 
+
+    var parliament = d3.parliament();
+    parliament.width(width).height(height).innerRadiusCoef(0.4);
+    parliament.enter.fromCenter(true).smallToBig(true);
+    parliament.exit.toCenter(false).bigToSmall(true);
+    d3.select("#sejm").datum(data).call(parliament);
+}
+
+data = [
+    {
+        "id": "kpp",
+        "legend": "KPP",
+        "name": "KPP",
+        "seats": Math.round(Q.kpp_sn*1.11),
+    },
+    {
+        "id": "pps",
+        "legend": "PPS",
+        "name": "PPS",
+        "seats": Math.round(Q.pps_sn*1.11),
+    },
+    {
+        "id": "npr",
+        "legend": "NPR",
+        "name": "NPR",
+        "seats": Math.round(Q.npr_sn*1.11),
+    },
+    {
+        "id": "psl_l",
+        "legend": "PSL-L",
+        "name": "PSL-L",
+        "seats": Math.round(Q.psl_l_sn*1.11),
+    },
+    {
+        "id": "psl_w",
+        "legend": "PSL-W",
+        "name": "PSL-W",
+        "seats": Math.round(Q.psl_w_sn*1.11),
+    },
+    {
+        "id": "psl_p",
+        "legend": "PSL-P",
+        "name": "PSL-P",
+        "seats": Math.round(Q.psl_p_sn*1.11),
+    },
+    {
+        "id": "bmn",
+        "legend": "BMN",
+        "name": "BMN",
+        "seats": Math.round(Q.bmn_sn*1.11),
+    },
+    {
+        "id": "other",
+        "legend": "Other",
+        "name": "Other",
+        "seats": Math.round(Q.other_sn*1.11),
+    },
+    {
+        "id": "zln",
+        "legend": "ZLN",
+        "name": "ZLN",
+        "seats": Math.round(Q.zln_sn*1.11),
+    },
+    {
+        "id": "pschd",
+        "legend": "PSChD",
+        "name": "PSChD",
+        "seats": Math.round(Q.pschd_sn*1.11),
+    },
+    {
+        "id": "otherright",
+        "legend": "Other Parties",
+        "name": "Other Parties",
+        "seats": Math.round(Q.othrr_sn*1.11),
+    },
+];
+
+if (window && d3) {
+    var width = 500; 
+    var height = 500;
+    var screenWidth = document.getElementById('content').offsetWidth;
+    if (screenWidth < width - 50) {
+        width = screenWidth - 50; 
+        height = width;
+        document.getElementById("senat").style.height = screenWidth/2 + "px";
+    } 
+
+    var parliament = d3.parliament();
+    parliament.width(width).height(height).innerRadiusCoef(0.4);
+    parliament.enter.fromCenter(true).smallToBig(true);
+    parliament.exit.toCenter(false).bigToSmall(true);
+    d3.select("#senat").datum(data).call(parliament);
+}
+!}
 
 = Government Composition
 <div style="text-align: center;">**Sejm**</div>
