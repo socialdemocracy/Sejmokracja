@@ -407,7 +407,7 @@ go-to: coalition_menu
 title: Invite the PSL-P.
 tags: coalition_1922
 choose-if: psl_p_support == 0
-view-if: psl_p_support == 0; lanckorona_pact == 0
+view-if: psl_p_support == 0 and lanckorona_pact == 0
 
 Should they tolerate or be in government?
 
@@ -420,7 +420,7 @@ subtitle: Their support would be unlikely after the Lanckorona Pact.
 unavailable-subtitle: WIP
 tags: coalition_1922
 choose-if: psl_p_support == 100
-view-if: psl_p_support == 0; lanckorona_pact == 1
+view-if: psl_p_support == 0 and lanckorona_pact == 1
 
 Our delegates are in touch with them. They are currently discussing on how the PSL-P would participate in the government.
 
