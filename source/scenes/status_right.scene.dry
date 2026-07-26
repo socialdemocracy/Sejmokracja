@@ -2,9 +2,15 @@ title: Inter-politics
 new-page: true
 is-special: true
 
-= Cabinet Composition
+= Government Composition
+<div style="text-align: center;">**Sejm**</div>
+{!<svg id="sejm" style="width: 500px; height: 250px;"> </svg>!}
+<div style="text-align: center;">Prime Minister: [+ prime_minister +] ([+ prime_minister_party +])</div>
 
-text
+<div style="text-align: center;">**Senate**</div>
+{!<svg id="senat" style="width: 500px; height: 250px;"> </svg>!}
+
+<div style="text-align: center;">[? if (right_sn > left_sn) and (right_sn > center_sn) : The Senat is dominated by the Right. ?][? if (left_sn > right_sn) and (left_sn > center_sn) : The Senat is dominated by the Left. ?][? if (center_sn >= right_sn) and (center_sn >= left_sn) : The Senat is dominated by the Centrists.</div>
 
 @actions
 
