@@ -317,7 +317,7 @@ We can pick any parties to form our government. No conditions yet WIP just gimme
 title: Invite the KPP.
 unavailable-subtitle: [? if kpp_relation <= 64 : Our relations are too low. ?][? if left_strength <= 29 : The Left doesn't have substantial influence to allow this arrangement. ?][? if psl_l_in_government : The KPP isn't willing to support the PSL-L ?][? if psl_w_in_government : The KPP isn't willing to support the PSL-W ?][? if psl_p_in_government : The KPP isn't willing to support the PSL-P ?]
 tags: coalition_1922
-choose-if: kpp_support == 0 kpp_relation >= 65 and left_strength >= 30 and psl_l_in_government == 0 and psl_w_in_government == 0 and psl_p_in_government == 0
+choose-if: kpp_support == 0 and kpp_relation >= 65 and left_strength >= 30 and psl_l_in_government == 0 and psl_w_in_government == 0 and psl_p_in_government == 0
 view-if: kpp_support == 0
 go-to: kppconcern
 
