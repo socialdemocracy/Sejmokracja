@@ -448,8 +448,8 @@ view-if: bmn_support == 0
 
 Should they tolerate or be in government?
 
-- @kppgov
-- @kpptol
+- @bmngov
+- @bmntol
 
 @bmngov
 title: In government.
@@ -471,7 +471,7 @@ go-to: coalition_menu
 
 cheater.
 
-@zln
+@pschd
 title: Invite the PSChd
 unavailable-subtitle: The PSChD would never do this.
 tags: coalition_1922
