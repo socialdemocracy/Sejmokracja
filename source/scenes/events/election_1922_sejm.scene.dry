@@ -496,7 +496,7 @@ on-arrival: npr_support = 0; npr_in_government = 0; coalition_mandate -= npr_sj
 view-if: npr_support == 1
 go-to: coalition_menu
 
-[? npr_support and npr_in_government : We have decided to drop them in the coalition ?][? npr_support and not npr_in_government : We don't need their support ?]
+[? if npr_support and npr_in_government : We have decided to drop them in the coalition ?][? if npr_support and not npr_in_government : We don't need their support ?]
 
 @drop_psl_l
 title: Drop the PSL-L.
@@ -505,7 +505,7 @@ on-arrival: psl_l_support = 0; psl_l_in_government = 0; coalition_mandate -= psl
 view-if: psl_l_support == 1
 go-to: coalition_menu
 
-[? psl_l_support and psl_l_in_government : We have decided to drop them in the coalition ?][? psl_l_support and not psl_l_in_government : We don't need their support ?]
+[? if psl_l_support and psl_l_in_government : We have decided to drop them in the coalition ?][? if psl_l_support and not psl_l_in_government : We don't need their support ?]
 
 @drop_psl_w
 title: Drop the PSL-W.
@@ -514,7 +514,7 @@ on-arrival: psl_w_support = 0; psl_w_in_government = 0; coalition_mandate -= psl
 view-if: psl_support == 1
 go-to: coalition_menu
 
-[? psl_w_support and psl_w_in_government : We have decided to drop them in the coalition ?][? psl_w_support and not psl_w_in_government : We don't need their support ?]
+[? if psl_w_support and psl_w_in_government : We have decided to drop them in the coalition ?][? if psl_w_support and not psl_w_in_government : We don't need their support ?]
 
 @drop_bmn
 title: Drop the BMN.
@@ -523,7 +523,7 @@ on-arrival: bmn_support = 0; bmn_in_government = 0; coalition_mandate -= bmn_sj;
 view-if: bmn_support == 1
 go-to: coalition_menu
 
-[? bmn_support and bmn_in_government : We have decided to drop them in the coalition ?][? bmn_support and not bmn_in_government : We don't need their support ?]
+[? if bmn_support and bmn_in_government : We have decided to drop them in the coalition ?][? if bmn_support and not bmn_in_government : We don't need their support ?]
 
 
 - @spd_majority
