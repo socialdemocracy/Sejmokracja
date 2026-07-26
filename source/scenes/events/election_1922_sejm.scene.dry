@@ -315,7 +315,7 @@ We can pick any parties to form our government. No conditions yet WIP just gimme
 
 @kpp
 title: Invite the KPP.
-unavailable-subtitle: [? kpp_relation <= 64 : Our relations are too low. ?][? left_strength <= 29 : The Left doesn't have substantial influence to allow this arrangement. ?][? psl_l_in_government : The KPP isn't willing to support the PSL-L ?][? psl_w_in_government : The KPP isn't willing to support the PSL-W ?][? psl_p_in_government : The KPP isn't willing to support the PSL-P ?]
+unavailable-subtitle: [? if kpp_relation <= 64 : Our relations are too low. ?][? if left_strength <= 29 : The Left doesn't have substantial influence to allow this arrangement. ?][? if psl_l_in_government : The KPP isn't willing to support the PSL-L ?][? if psl_w_in_government : The KPP isn't willing to support the PSL-W ?][? if psl_p_in_government : The KPP isn't willing to support the PSL-P ?]
 tags: coalition_1922
 choose-if: kpp_support == 0 kpp_relation >= 65 and left_strength >= 30 and psl_l_in_government == 0 and psl_w_in_government == 0; psl_p_in_government == 0
 view-if: kpp_support == 0
@@ -441,7 +441,7 @@ go-to: coalition_menu
 
 @bmn
 title: Invite the BMN.
-unavailable-subtitle: [? bmn_relation : Our relations are too low. ?][? psl_p_in_government : The BMN isn't willing to support the PSL-P?]
+unavailable-subtitle: [? if bmn_relation : Our relations are too low. ?][? if psl_p_in_government : The BMN isn't willing to support the PSL-P?]
 tags: coalition_1922
 choose-if: bmn_support == 0
 view-if: bmn_support == 0
