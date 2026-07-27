@@ -100,10 +100,12 @@ Q.coalition_mandate = 0;
 Q.other_coalition_mandate = 0;
 
 // coalitions
-Q.weimar_coalition = Q.spd_r + Q.ddp_r + Q.z_r - 3;
-
-Q.strike_term_seen = 0;
-
+Q.social_peasant_coalition = Q.pps_sj + Q.psl_w_sj + Q.pps_p_sj;
+if (Q.social_peasant_coalition <= 50) {
+    Q.social_peasant_coalition += Q.psl_l_sj;
+}
+Q.conservative_peasant_coalition = Q.psl_p + Q.zln + Q.otherright_sj + Q.pschd_sj;
+Q.chzjn_majority = Q.zln_sj + Q.otherright_sj + Q.pschd_sj;
 
 var election_result = {'date': new Date(Q.year, Q.month - 1)};
 for (var party of Q.parties) {
@@ -235,7 +237,7 @@ go-to: pm_appoint
 
 **Potential coalition partners:**
 
-skibidi
+Social-Peasant Coalition
 
 @pm_appoint
 
