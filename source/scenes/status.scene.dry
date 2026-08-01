@@ -20,7 +20,7 @@ if (Q.economic_growth) {
 
 Resources available: [+ resources +]
 
-<span style="color: #C62828;"><span class="tooltip-text" title="Polish Socialist Party">**PPS**</span></span> position: [? if spd_toleration : toleration ?][? if spd_in_government : in government - ?][? if spd_toleration == 0 and spd_in_government == 0 and spd_caretaker == 0 : opposition ?][? if spd_caretaker : caretaker government ?]
+<span style="color: #DD0000;"><span class="tooltip-text" title="Polish Socialist Party">**PPS**</span></span> position: [? if spd_toleration : toleration ?][? if spd_in_government : in government - ?][? if spd_toleration == 0 and spd_in_government == 0 and spd_caretaker == 0 : opposition ?][? if spd_caretaker : caretaker government ?]
 
 Internal dissent: [+ dissent_percent : dissent +]
 
@@ -28,7 +28,7 @@ Internal dissent: [+ dissent_percent : dissent +]
 
 President: [+ president +]
 
-President Relation: [+ president_relation : president_relation + ]
+President Relation: [+ president_relation : relationships + ]
 
 Prime Minister: [+ chancellor +] ([+ chancellor_party +])
 
