@@ -58,7 +58,7 @@ on-arrival: left_dissent -= 7; reformist_dissent += 2; conservative_dissent += 3
 We have promised that we will listen to the left wing of the party. Of course, this leads to increased dissent from the republicans and conservatives.
 
 @concessions_conservative
-title: Give concessions to labor.
+title: Give concessions to the conservatives.
 view-if: conservative_dissent > 30
 on-arrival: comservative_dissent -= 7; center_dissent += 2; left_dissent += 3
 
