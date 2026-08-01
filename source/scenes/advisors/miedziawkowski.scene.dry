@@ -1,0 +1,57 @@
+title: Mieczysław Niedziałkowski
+is-pinned-card: true
+tags: advisor, centrist
+card-image: img/portraits/NiedziałkowskiMieczysław.jpg
+view-if: niedziawkowski_advisor = 1
+new-page: true 
+
+= Mieczysław Niedziałkowski
+Mieczysław Niedziałkowski is the long-time editor-in-chief of Robotnik, our party newspaper. He is also a writer and advocate of socialism and stable polish politics.
+
+- @media_
+- @faction_support_
+- @root: Return to main
+
+
+@media_
+title: Media
+subtitle: Manage our party's newspapers and media.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; media_timer -= 6; last_advisor_action = 1
+go-to: media
+
+
+@faction_support_
+title: Editorial Line
+subtitle: We can change the editorial line of Robotnik to support a particular faction.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6
+
+Which faction should we support?
+
+- @support_left: Left
+- @support_center: Center
+- @support_conservative: Conservative
+- @support_reformist: Reformists
+
+@support_left
+on-arrival: left_dissent -= 8; left_strength += 8
+
+Robotnik prints editorials in support of Left positions.
+
+@support_center
+on-arrival: center_dissent -= 8; center_strength += 8
+
+Robotnik prints editorials in support of centrist positions.
+
+@support_conservative
+on-arrival: conservative_dissent -= 8; conservative_strength += 8
+
+Robotnik prints editorials in support of conservative positions.
+
+@support_reformist
+on-arrival: reformist_dissent -= 8; reformist_strength += 8
+
+Robotnik prints editorials in support reformist positions.
