@@ -30,7 +30,7 @@ unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +
 choose-if: advisor_action_timer = 0
 on-arrival: advisor_action_timer = 6; president_relation += 5; president_relation += 5 if president == "Piłsudski"
 
-We have reduced dissent among the anti-toleration factions. 
+We have improved our relations with [+ President +]
 
 @finance_ministry_
 title: Fiscal Policy
