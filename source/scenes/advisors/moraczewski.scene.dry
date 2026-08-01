@@ -31,7 +31,7 @@ on-arrival: advisor_action_timer = 6; president_relation += 5; president_relatio
 
 We have reduced dissent among the anti-toleration factions. 
 
-@@finance_ministry_
+@finance_ministry_
 title: Fiscal Policy
 subtitle: As Finance Minister, Moraczewski can enact tax policies.
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if pps_in_government = 0 : PPS not in government: ?] [? if finance_minister_party != "PPS" : The PPS does not control the finance ministry. ?]
