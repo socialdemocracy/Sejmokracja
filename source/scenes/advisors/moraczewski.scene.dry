@@ -1,0 +1,40 @@
+title: Jędrzej Moraczewski
+is-pinned-card: true 
+tags: advisor, conservative
+card-image: img/portraits/MoraczewskiJędrzej.jpg
+new-page: true
+view-if: moraczewski_advisor = 1
+
+= Jędrzej Moraczewski
+
+Moraczewski is one of the PPS leaders. He is a great supporter of Piłsudski. The Left and Right are welcoming to him
+- @peasants_right
+- @president
+- @finance_ministry_
+- @root: Return to main
+
+@peasants_right
+title: Negotiating with the Peasants and Right
+subtitle: Moraczewski can improve our relationships with the Peasants and Right-wing parties.
+choose-if: advisor_action_timer <= 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; psl_l_relation += 5; psl_w_relation += 5; psl_p_relation += 5; psl_p_relation -= 2 if lanckorona_pact; zln_relation += 3; pschd_relation += 3
+
+We have improved our relations with the PSL-"Lewica", PSL-"Wyzwolenie", PSL-"Piast", and ChZJN. [? if lanckorona_pact : Moraczewski have found it difficult to negotiate with the PSL-"Piast" and the ChZJN ?]
+
+@president
+title: Negotiating with the President
+subtitle: Moraczewski can improve our relationship with the President.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+choose-if: advisor_action_timer = 0
+on-arrival: advisor_action_timer = 6; president_relation += 5; president_relation += 5 if president == "Piłsudski"
+
+We have reduced dissent among the anti-toleration factions. 
+
+@@finance_ministry_
+title: Fiscal Policy
+subtitle: As Finance Minister, Moraczewski can enact tax policies.
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if pps_in_government = 0 : PPS not in government: ?] [? if finance_minister_party != "PPS" : The PPS does not control the finance ministry. ?]
+choose-if: advisor_action_timer == 0 and pps_in_government == 1 and finance_minister_party == "PPS"
+on-arrival: advisor_action_timer = 6; fiscal_policy_timer -= 6; last_advisor_action = 1
+go-to: fiscal_policy
