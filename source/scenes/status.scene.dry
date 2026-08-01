@@ -20,13 +20,7 @@ if (Q.economic_growth) {
 
 Resources available: [+ resources +]
 
-<span style="color: #C62828;"><span class="tooltip-text" title="Polish Socialist Party">*PPS*</span></span> position: [? if spd_toleration : toleration ?][? if spd_in_government : in government - ?][? if spd_toleration == 0 and spd_in_government == 0 and spd_caretaker == 0 : opposition ?][? if spd_caretaker : caretaker government ?]
-
-[? if in_weimar_coalition and spd_in_government: Weimar Coalition ?][? if in_grand_coalition and spd_in_government: Grand Coalition ?][? if in_popular_front and spd_in_government: Popular Front ?][? if in_left_front and spd_in_government: Left Front ?][? if in_spd_majority and spd_in_government: SPD majority ?][? if in_minority_government and spd_in_government: minority government ?][? if in_emergency_government and spd_in_government: emergency government ?]
-
-[? if spd_in_government and not in_spd_majority and not in_left_front : Coalition dissent: [+ coalition_dissent : coalition_dissent +] ?]
-
-[? if spd_in_government and (in_left_front or in_popular_front): KPD coalition dissent: [+ kpd_coalition_dissent : coalition_dissent +] ?]
+<span style="color: #C62828;"><span class="tooltip-text" title="Polish Socialist Party">**PPS**</span></span> position: [? if spd_toleration : toleration ?][? if spd_in_government : in government - ?][? if spd_toleration == 0 and spd_in_government == 0 and spd_caretaker == 0 : opposition ?][? if spd_caretaker : caretaker government ?]
 
 Internal dissent: [+ dissent_percent : dissent +]
 
@@ -38,7 +32,10 @@ Chancellor: [+ chancellor +] ([+ chancellor_party +])
 
 Sejm:
 
-<span style="color: #C62828;"><span class="tooltip-text" title="Polish Socialist Party">*PPS:*</span></span> [+ pps_sj +]
+<span style="color: #C62828;"><span class="tooltip-text" title="Polish Socialist Party">**PPS:**</span></span> [+ pps_sj +]
+
+<span style="padding-left:26px;"><span class="tooltip-text" title="test">- **ZLN:**</span> [+ zln_sj +]</span>
+
 
 Others: [+ other_r +]%
 
