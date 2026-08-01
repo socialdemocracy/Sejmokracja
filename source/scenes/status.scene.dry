@@ -28,7 +28,7 @@ Internal dissent: [+ dissent_percent : dissent +]
 
 President: [+ president +]
 
-President Relation: [+ president_relation : relationships + ]
+President Relation: [+ president_relation : relationships +]
 
 Prime Minister: [+ chancellor +] ([+ chancellor_party +])
 
