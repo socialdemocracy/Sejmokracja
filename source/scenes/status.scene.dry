@@ -39,7 +39,9 @@ Sejm:
 <span style="color: #312E99;"><span class="tooltip-text" title="Christian Union of National Unity (Chjena)">**ChZJN**</span></span>: 0%
 
 <span style="padding-left:18px;">- <span class="tooltip-text" title="People's National Union">**ZLN**</span>: [+ zln_sj +]%</span>
+
 <span style="padding-left:18px;">- <span class="tooltip-text" title="Polish Christian Democratic Party">**PSChD**</span>: [+ pschd_sj +]%</span>
+
 <span style="padding-left:18px;">- <span class="tooltip-text" title="Christian National Agricultural Party and The National Christian People's Party">**Other Parties**</span>: [+ otherright_sj +]%</span>
 
 Others: [+ other_sj +]%
