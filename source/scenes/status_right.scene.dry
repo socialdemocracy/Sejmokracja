@@ -1,7 +1,7 @@
 title: Inter-politics
 new-page: true
 is-special: true
-on-display: {!
+on-arrival: {!
 data = [
     {
         "id": "kpp",
@@ -71,24 +71,7 @@ data = [
     },
 ];
 
-if (window && d3) {
-    var width = 500; 
-    var height = 500;
-    var screenWidth = document.getElementById('content').offsetWidth;
-    if (screenWidth < width - 50) {
-        width = screenWidth - 50; 
-        height = width;
-        document.getElementById("sejm").style.height = screenWidth/2 + "px";
-    } 
-
-    var parliament = d3.parliament();
-    parliament.width(width).height(height).innerRadiusCoef(0.4);
-    parliament.enter.fromCenter(true).smallToBig(true);
-    parliament.exit.toCenter(false).bigToSmall(true);
-    d3.select("#sejm").datum(data).call(parliament);
-}
-
-data = [
+data_sn = [
     {
         "id": "kpp",
         "legend": "KPP",
@@ -153,26 +136,49 @@ data = [
         "id": "otherright",
         "legend": "Other Parties",
         "name": "Other Parties",
-        "seats": Math.round(Q.othrr_sn*1.11),
+        "seats": Math.round(Q.otherright_sn*1.11),
     },
 ];
+setTimeout(function() {
+    if (typeof window !== 'undefined' && typeof d3 !== 'undefined' && d3.parliament) {
+        
+        // Render Sejm
+        var width1 = 500; 
+        var height1 = 500;
+        var elementSejm = document.getElementById("sejm");
+        if (elementSejm) {
+            var screenWidth = document.getElementById('content').offsetWidth;
+            if (screenWidth < width1 - 50) {
+                width1 = screenWidth - 50; 
+                height1 = width1;
+                elementSejm.style.height = (screenWidth / 2) + "px";
+            } 
+            var parliament1 = d3.parliament();
+            parliament1.width(width1).height(height1).innerRadiusCoef(0.4);
+            parliament1.enter.fromCenter(true).smallToBig(true);
+            parliament1.exit.toCenter(false).bigToSmall(true);
+            d3.select("#sejm").datum(data).call(parliament1);
+        }
 
-if (window && d3) {
-    var width = 500; 
-    var height = 500;
-    var screenWidth = document.getElementById('content').offsetWidth;
-    if (screenWidth < width - 50) {
-        width = screenWidth - 50; 
-        height = width;
-        document.getElementById("senat").style.height = screenWidth/2 + "px";
-    } 
-
-    var parliament = d3.parliament();
-    parliament.width(width).height(height).innerRadiusCoef(0.4);
-    parliament.enter.fromCenter(true).smallToBig(true);
-    parliament.exit.toCenter(false).bigToSmall(true);
-    d3.select("#senat").datum(data).call(parliament);
-}
+        // Render Senat
+        var width2 = 500; 
+        var height2 = 500;
+        var elementSenat = document.getElementById("senat");
+        if (elementSenat) {
+            var screenWidth = document.getElementById('content').offsetWidth;
+            if (screenWidth < width2 - 50) {
+                width2 = screenWidth - 50; 
+                height2 = width2;
+                elementSenat.style.height = (screenWidth / 2) + "px";
+            } 
+            var parliament2 = d3.parliament();
+            parliament2.width(width2).height(height2).innerRadiusCoef(0.4);
+            parliament2.enter.fromCenter(true).smallToBig(true);
+            parliament2.exit.toCenter(false).bigToSmall(true);
+            d3.select("#senat").datum(data_sn).call(parliament2);
+        }
+    }
+}, 50);
 !}
 
 = Government Composition
