@@ -4,7 +4,7 @@ view-if: year <= 1932 and inter_party_relationships_timer <= 0
 tags: party_affairs
 is-card: true
 on-arrival: month_actions += 1; inter_party_relationships_timer = 6;
-card-image: img/Inter_Party_Relations.png
+card-image: img/Inter_Party_Relationships.png
 max-visits: 12
 #subtitle: Building relations with the other political parties of Poland.
 
@@ -57,6 +57,14 @@ We are able through build a relationship with the <span style="color: #E3AF34;">
 on-arrival: bmn_relation += 5
 
 We are currently coalition partners with them, and historically, they haven't been able to enter the government without our help so improving relations comes naturally.
+
+@npr
+subtitle: -1 resources
+choose-if: resources >= 1
+unavailable-subtitle: Not enough resources.
+on-arrival: resources -= 1; npr_relation += 8
+
+I ran out of flavor text idea.
 
 @pps_alone
 
