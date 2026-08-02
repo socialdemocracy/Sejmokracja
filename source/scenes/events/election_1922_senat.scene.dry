@@ -78,9 +78,23 @@ for (var party of Q.parties) {
 Q.left_sn = Q.kpp_sn + Q.pps_sn + (Q.npr_sn*0.5) + Q.psl_l_sn + (Q.psl_w_sn*0.3);
 Q.center_sn = (Q.psl_w_sn*0.7) + (Q.psl_p_sn*0.6) + Q.bmn_sn + Q.other_sn;
 Q.right_sn = (Q.npr_sn*0.5) + Q.otherright_sn + Q.zln_sn + Q.pschd_sn + (Q.psl_p_sn*0.4);
+
+Q.left_dominant_sn = 0;
+Q.center_dominant_sn = 0;
+Q.right_dominant_sn = 0;
+
+if ((left_sn > center_sn) and (left_sn > right_sn)){
+    Q.left_dominant_sn = 1;
+}
+if ((center_sn > left_sn) and (center_sn > right_sn)){
+    Q.center_dominant_sn = 1;
+}
+if ((right_sn > left_sn) and (right_sn > centrr_sn)){
+    Q.right_dominant_sn = 1;
+}
 !}
 on-display: {!
-data = [
+data_sn = [
     {
         "id": "kpp",
         "legend": "KPP",
@@ -149,6 +163,8 @@ data = [
     },
 ];
 
+Q.sn_display = data_sn
+
 if (window && d3) {
     var width = 500; 
     var height = 500;
@@ -199,4 +215,4 @@ if (window && d3) {
 
 {!</table>!}
 
-[? if (right_sn > left_sn) and (right_sn > center_sn) : The Senat is dominated by the right. ?][? if (left_sn > right_sn) and (left_sn > center_sn) : The Senat is dominated by the left. ?][? if (center_sn >= right_sn) and (center_sn >= left_sn) : The Senat is dominated by the centrists. ?]
+[? if right_dominant_sn : The Senat is dominated by the right. ?][? if left_dominant_sn : The Senat is dominated by the left. ?][? if center_dominant_sn : The Senat is dominated by the centrists. ?]
