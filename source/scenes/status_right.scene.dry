@@ -1,196 +1,55 @@
 title: Inter-politics
 new-page: true
 is-special: true
-on-arrival: {!
-data = [
-    {
-        "id": "kpp",
-        "legend": "KPP",
-        "name": "KPP",
-        "seats": Math.round(Q.kpp_sj*4.44),
-    },
-    {
-        "id": "pps",
-        "legend": "PPS",
-        "name": "PPS",
-        "seats": Math.round(Q.pps_sj*4.44),
-    },
-    {
-        "id": "npr",
-        "legend": "NPR",
-        "name": "NPR",
-        "seats": Math.round(Q.npr_sj*4.44),
-    },
-    {
-        "id": "psl_l",
-        "legend": "PSL-L",
-        "name": "PSL-L",
-        "seats": Math.round(Q.psl_l_sj*4.44),
-    },
-    {
-        "id": "psl_w",
-        "legend": "PSL-W",
-        "name": "PSL-W",
-        "seats": Math.round(Q.psl_w_sj*4.44),
-    },
-    {
-        "id": "psl_p",
-        "legend": "PSL-P",
-        "name": "PSL-P",
-        "seats": Math.round(Q.psl_p_sj*4.44),
-    },
-    {
-        "id": "bmn",
-        "legend": "BMN",
-        "name": "BMN",
-        "seats": Math.round(Q.bmn_sj*4.44),
-    },
-    {
-        "id": "other",
-        "legend": "Other",
-        "name": "Other",
-        "seats": Math.round(Q.other_sj*4.44),
-    },
-    {
-        "id": "zln",
-        "legend": "ZLN",
-        "name": "ZLN",
-        "seats": Math.round(Q.zln_sj*4.44),
-    },
-    {
-        "id": "pschd",
-        "legend": "PSChD",
-        "name": "PSChD",
-        "seats": Math.round(Q.pschd_sj*4.44),
-    },
-    {
-        "id": "otherright",
-        "legend": "Other Parties",
-        "name": "Other Parties",
-        "seats": Math.round(Q.otherright_sj*4.44),
-    },
-];
+on-display: {!
+data_sj = Q.sj_display;
+if (window && d3) {
+    var data_sj = Q.sj_display;
+var width = 500; 
+    var height = 500;
+    var screenWidth = document.getElementById('content').offsetWidth;
+    if (screenWidth < width - 50) {
+        width = screenWidth - 50; 
+        height = width;
+        document.getElementById("sejm_display").style.height = screenWidth/2 + "px";
+    } 
 
-data_sn = [
-    {
-        "id": "kpp",
-        "legend": "KPP",
-        "name": "KPP",
-        "seats": Math.round(Q.kpp_sn*1.11),
-    },
-    {
-        "id": "pps",
-        "legend": "PPS",
-        "name": "PPS",
-        "seats": Math.round(Q.pps_sn*1.11),
-    },
-    {
-        "id": "npr",
-        "legend": "NPR",
-        "name": "NPR",
-        "seats": Math.round(Q.npr_sn*1.11),
-    },
-    {
-        "id": "psl_l",
-        "legend": "PSL-L",
-        "name": "PSL-L",
-        "seats": Math.round(Q.psl_l_sn*1.11),
-    },
-    {
-        "id": "psl_w",
-        "legend": "PSL-W",
-        "name": "PSL-W",
-        "seats": Math.round(Q.psl_w_sn*1.11),
-    },
-    {
-        "id": "psl_p",
-        "legend": "PSL-P",
-        "name": "PSL-P",
-        "seats": Math.round(Q.psl_p_sn*1.11),
-    },
-    {
-        "id": "bmn",
-        "legend": "BMN",
-        "name": "BMN",
-        "seats": Math.round(Q.bmn_sn*1.11),
-    },
-    {
-        "id": "other",
-        "legend": "Other",
-        "name": "Other",
-        "seats": Math.round(Q.other_sn*1.11),
-    },
-    {
-        "id": "zln",
-        "legend": "ZLN",
-        "name": "ZLN",
-        "seats": Math.round(Q.zln_sn*1.11),
-    },
-    {
-        "id": "pschd",
-        "legend": "PSChD",
-        "name": "PSChD",
-        "seats": Math.round(Q.pschd_sn*1.11),
-    },
-    {
-        "id": "otherright",
-        "legend": "Other Parties",
-        "name": "Other Parties",
-        "seats": Math.round(Q.otherright_sn*1.11),
-    },
-];
-setTimeout(function() {
-    if (typeof window !== 'undefined' && typeof d3 !== 'undefined' && d3.parliament) {
-        
-        // Render Sejm
-        var width1 = 500; 
-        var height1 = 500;
-        var elementSejm = document.getElementById("sejm");
-        if (elementSejm) {
-            var screenWidth = document.getElementById('content').offsetWidth;
-            if (screenWidth < width1 - 50) {
-                width1 = screenWidth - 50; 
-                height1 = width1;
-                elementSejm.style.height = (screenWidth / 2) + "px";
-            } 
-            var parliament1 = d3.parliament();
-            parliament1.width(width1).height(height1).innerRadiusCoef(0.4);
-            parliament1.enter.fromCenter(true).smallToBig(true);
-            parliament1.exit.toCenter(false).bigToSmall(true);
-            d3.select("#sejm").datum(data).call(parliament1);
-        }
+    var parliament_sj_display = d3.parliament();
+    parliament_sj_display.width(width).height(height).innerRadiusCoef(0.4);
+    parliament_sj_display.enter.fromCenter(true).smallToBig(true);
+    parliament_sj_display.exit.toCenter(false).bigToSmall(true);
+    d3.select("#sejm_display").datum(data).call(parliament);
+}
+data_sn = Q.sn_display;
+if (window && d3) {
+    var data_sn = Q.sn_display;
+var width = 500; 
+    var height = 500;
+    var screenWidth = document.getElementById('content').offsetWidth;
+    if (screenWidth < width - 50) {
+        width = screenWidth - 50; 
+        height = width;
+        document.getElementById("senat_display").style.height = screenWidth/2 + "px";
+    } 
 
-        // Render Senat
-        var width2 = 500; 
-        var height2 = 500;
-        var elementSenat = document.getElementById("senat");
-        if (elementSenat) {
-            var screenWidth = document.getElementById('content').offsetWidth;
-            if (screenWidth < width2 - 50) {
-                width2 = screenWidth - 50; 
-                height2 = width2;
-                elementSenat.style.height = (screenWidth / 2) + "px";
-            } 
-            var parliament2 = d3.parliament();
-            parliament2.width(width2).height(height2).innerRadiusCoef(0.4);
-            parliament2.enter.fromCenter(true).smallToBig(true);
-            parliament2.exit.toCenter(false).bigToSmall(true);
-            d3.select("#senat").datum(data_sn).call(parliament2);
-        }
-    }
-}, 50);
+    var parliament_sn_display = d3.parliament();
+    parliament_sn_display.width(width).height(height).innerRadiusCoef(0.4);
+    parliament_sn_display.enter.fromCenter(true).smallToBig(true);
+    parliament_sn_display.exit.toCenter(false).bigToSmall(true);
+    d3.select("#senat_display").datum(data).call(parliament);
+}
 !}
 
-= Government Composition
+= Parliament
+
 <div style="text-align: center;">**Sejm**</div>
-{!<svg id="sejm" style="width: 500px; height: 250px;"> </svg>!}
+{!<svg id="sejm_display" style="width: 500px; height: 250px;"> </svg>!}
 <div style="text-align: center;">Prime Minister: [+ prime_minister +] ([+ prime_minister_party +])</div>
 
-<div style="text-align: center;">**Senate**</div>
-{!<svg id="senat" style="width: 500px; height: 250px;"> </svg>!}
+[? if year >= 1923 : <div style="text-align: center;">**Senate**</div>
+{!<svg id="senat_display" style="width: 500px; height: 250px;"> </svg>!}
 
-<div style="text-align: center;">[? if (right_sn > left_sn) and (right_sn > center_sn) : The Senat is dominated by the Right. ?][? if (left_sn > right_sn) and (left_sn > center_sn) : The Senat is dominated by the Left. ?][? if (center_sn >= right_sn) and (center_sn >= left_sn) : The Senat is dominated by the Centrists.</div>
-
+<div style="text-align: center;">[? if (right_sn > left_sn) and (right_sn > center_sn) : The Senat is dominated by the Right. ?][? if (left_sn > right_sn) and (left_sn > center_sn) : The Senat is dominated by the Left. ?][? if (center_sn >= right_sn) and (center_sn >= left_sn) : The Senat is dominated by the Centrists.?]</div>?]
 @actions
 
 = Actions
