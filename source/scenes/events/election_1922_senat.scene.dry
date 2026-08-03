@@ -94,7 +94,7 @@ if ((Q.right_sn > left_sn) && (Q.right_sn > Q.center_sn)){
 }
 !}
 on-display: {!
-const data_sn = [
+data_sn = [
     {
         "id": "kpp",
         "legend": "KPP",

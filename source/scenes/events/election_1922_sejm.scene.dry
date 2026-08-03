@@ -113,7 +113,7 @@ for (var party of Q.parties) {
 Q.election_records.push(election_result);
 !}
 on-display: {!
-const data_sj = [
+data_sj = [
     {
         "id": "kpp",
         "legend": "KPP",
