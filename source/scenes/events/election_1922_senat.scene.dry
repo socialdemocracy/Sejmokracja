@@ -83,13 +83,13 @@ Q.left_dominant_sn = 0;
 Q.center_dominant_sn = 0;
 Q.right_dominant_sn = 0;
 
-if ((left_sn > center_sn) and (left_sn > right_sn)){
+if ((Q.left_sn > Q.center_sn) && (left_sn > Q.right_sn)){
     Q.left_dominant_sn = 1;
 }
-if ((center_sn > left_sn) and (center_sn > right_sn)){
+if ((Q.center_sn > Q.left_sn) && (Q.center_sn > Q.right_sn)){
     Q.center_dominant_sn = 1;
 }
-if ((right_sn > left_sn) and (right_sn > centrr_sn)){
+if ((Q.right_sn > left_sn) && (Q.right_sn > Q.center_sn)){
     Q.right_dominant_sn = 1;
 }
 !}
