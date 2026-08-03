@@ -113,7 +113,7 @@ for (var party of Q.parties) {
 Q.election_records.push(election_result);
 !}
 on-display: {!
-data_sj = [
+const data_sj = [
     {
         "id": "kpp",
         "legend": "KPP",
@@ -198,7 +198,7 @@ if (window && d3) {
     parliament.width(width).height(height).innerRadiusCoef(0.4);
     parliament.enter.fromCenter(true).smallToBig(true);
     parliament.exit.toCenter(false).bigToSmall(true);
-    d3.select("#sejm").datum(data).call(parliament);
+    d3.select("#sejm").datum(data_sj).call(parliament);
 }
 !}
 go-to: pm_appoint

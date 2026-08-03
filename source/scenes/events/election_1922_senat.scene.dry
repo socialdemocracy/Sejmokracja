@@ -94,7 +94,7 @@ if ((Q.right_sn > left_sn) && (Q.right_sn > Q.center_sn)){
 }
 !}
 on-display: {!
-data_sn = [
+const data_sn = [
     {
         "id": "kpp",
         "legend": "KPP",
@@ -179,7 +179,7 @@ if (window && d3) {
     parliament.width(width).height(height).innerRadiusCoef(0.4);
     parliament.enter.fromCenter(true).smallToBig(true);
     parliament.exit.toCenter(false).bigToSmall(true);
-    d3.select("#senat").datum(data).call(parliament);
+    d3.select("#senat").datum(data_sn).call(parliament);
 }
 !}
 
