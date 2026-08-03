@@ -3,7 +3,7 @@ new-page: true
 is-special: true
 on-display: {!
 data_sj = Q.sj_display;
-if (window && d3 && Q.started) {
+if (window && d3) {
     var data_sj = Q.sj_display;
 var width = 500; 
     var height = 500;
@@ -18,7 +18,7 @@ var width = 500;
     parliament_sj_display.width(width).height(height).innerRadiusCoef(0.4);
     parliament_sj_display.enter.fromCenter(true).smallToBig(true);
     parliament_sj_display.exit.toCenter(false).bigToSmall(true);
-    d3.select("#sejm_display").datum(data_sj).call(sejm_display);
+    d3.select("#sejm_display").datum(data_sj).call(parliament_sj_display);
 }
 data_sn = Q.sn_display;
 if (window && d3) {
@@ -36,7 +36,7 @@ var width = 500;
     parliament_sn_display.width(width).height(height).innerRadiusCoef(0.4);
     parliament_sn_display.enter.fromCenter(true).smallToBig(true);
     parliament_sn_display.exit.toCenter(false).bigToSmall(true);
-    d3.select("#senat_display").datum(data_sn).call(senat_display);
+    d3.select("#senat_display").datum(data_sn).call(parliament_sn_display);
 }
 !}
 
