@@ -361,14 +361,14 @@ Q.psl_l_in_government = 0;
 Q.psl_w_in_government = 0;
 Q.psl_p_in_government = 0;
 Q.bmn_in_government = 0;
-Q.zln_in_government = 1;
+Q.zln_in_government = 0;
 Q.pschd_in_government = 1;
 Q.other_in_government = 0;
 Q.otherright_in_government = 1;
 // Who tolerates the government
 Q.kpp_toleration = 0;
 Q.pps_toleration = 1;
-Q.npr_toleration = 1;
+Q.npr_toleration = 0;
 Q.psl_l_toleration = 0;
 Q.psl_w_toleration = 1;
 Q.psl_p_toleration = 1;
@@ -387,7 +387,7 @@ Q.president_caretaker_government = 0;
 
 Q.minority_government = 0;
 
-Q.government_mandate = Q.zln_sj + Q.pschd_sj + Q.otherright_sj + Q.other_sj + Q.psl_p_sj + Q.psl_w_sj + Q.npr_sj + Q.pps_sj;
+Q.government_mandate = Q.pschd_sj + Q.otherright_sj + Q.other_sj + Q.psl_p_sj + Q.psl_w_sj + Q.pps_sj;
 
 Q.prime_minister_party = 'Ponikowski';
 Q.prime_minister = 'PSChD';
@@ -420,6 +420,7 @@ Q.panzerkreuzer_failed = 0;
 Q.unemployment_insurance_seen = 0;
 // unemployment insurance event is seen if the unemployment level is at least 4 more than the threshold...
 Q.unemployment_insurance_threshold = 10;
+Q.vilnius = 0;
 Q.blutmai = 0;
 
 // have we reformed these institutions to be more democratic?
