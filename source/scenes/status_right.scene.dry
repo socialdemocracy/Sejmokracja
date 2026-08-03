@@ -18,7 +18,7 @@ var width = 500;
     parliament_sj_display.width(width).height(height).innerRadiusCoef(0.4);
     parliament_sj_display.enter.fromCenter(true).smallToBig(true);
     parliament_sj_display.exit.toCenter(false).bigToSmall(true);
-    d3.select("#sejm_display").datum(data).call(parliament);
+    d3.select("#sejm_display").datum(data_sj).call(parliament);
 }
 data_sn = Q.sn_display;
 if (window && d3) {
@@ -36,7 +36,7 @@ var width = 500;
     parliament_sn_display.width(width).height(height).innerRadiusCoef(0.4);
     parliament_sn_display.enter.fromCenter(true).smallToBig(true);
     parliament_sn_display.exit.toCenter(false).bigToSmall(true);
-    d3.select("#senat_display").datum(data).call(parliament);
+    d3.select("#senat_display").datum(data_sn).call(parliament);
 }
 !}
 
@@ -74,10 +74,10 @@ Government Mandate: [+ government_mandate +]/100%
 {!<tr><td><div class="box" style='background-color:#909090;'> </div> !} **Other**: {!</td><td>!} [+ other_sj +]% {!</td><td>!} [? if other_in_government = 0 : <span style="color: #D42F2F;">Opposition</span> ?][? if other_in_government = 1 : <span style="color: #66BB6A;">In Government</span> ?][? if other_toleration = 1 : <span style="color: #FFB74D;">Toleration</span> ?] {!</td></tr>!}
 {!</table>!}
 
-[? if year >= 1923 : <div style="text-align: center;">**Senate**</div>
-{!<svg id="senat_display" style="width: 500px; height: 250px;"> </svg>!}
+[? if year >= 1923 : <div style="text-align: center;">**Senate**</div> ?]
+[? if year >= 1923 : {!<svg id="senat_display" style="width: 500px; height: 250px;"> </svg>!} ?]
 
-<div style="text-align: center;">[? if right_dominant_sn : The Senat is dominated by the right. ?][? if left_dominant_sn : The Senat is dominated by the left. ?][? if center_dominant_sn : The Senat is dominated by the centrists. ?]</div> ?]
+[? if year >= 1923 : <div style="text-align: center;">[? if right_dominant_sn : The Senat is dominated by the right. ?][? if left_dominant_sn : The Senat is dominated by the left. ?][? if center_dominant_sn : The Senat is dominated by the centrists. ?]</div> ?]
 
 @cabinet
 
