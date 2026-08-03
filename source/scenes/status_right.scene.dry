@@ -44,14 +44,61 @@ var width = 500;
 
 <div style="text-align: center;">**Sejm**</div>
 {!<svg id="sejm_display" style="width: 500px; height: 250px;"> </svg>!}
-<div style="text-align: center;">Prime Minister: [+ prime_minister +] ([+ prime_minister_party +])</div>
+
+Government Mandate: [+ government_mandate +]/100%
+
+{!<table>!} 
+{!<tr><td>Party</td><td>Mandate</td><td>Status</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#890000;'> </div> !} **KPP**: {!</td><td>!} [+ kpp_sj +]% {!</td><td>!} [? if kpp_in_government = 0 : <span style="color: #D42F2F;">Opposition</span> ?][? if kpp_in_government = 1 : <span style="color: #66BB6A;">In Government</span> ?][? if kpp_toleration = 1 : <span style="color: #FFB74D;">Toleration</span> ?] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#DD0000; outline: 2px; outline-style: solid;'> </div> !} **PPS**: {!</td><td>!} [+ pps_sj +]% {!</td><td>!} [? if pps_in_government = 0 : <span style="color: #D42F2F;">Opposition</span> ?][? if pps_in_government = 1 : <span style="color: #66BB6A;">In Government</span> ?][? if pps_toleration = 1 : <span style="color: #FFB74D;">Toleration</span> ?] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#841839;'> </div> !} **NPR**: {!</td><td>!} [+ npr_sj +]% {!</td><td>!} [? if npr_in_government = 0 : <span style="color: #D42F2F;">Opposition</span> ?][? if npr_in_government = 1 : <span style="color: #66BB6A;">In Government</span> ?][? if npr_toleration = 1 : <span style="color: #FFB74D;">Toleration</span> ?] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#80FF00;'> </div> !} **PSL-**: {!</td><td>!} [+ psl_l_sj +]% {!</td><td>!} [? if psl_l_in_government = 0 : <span style="color: #D42F2F;">Opposition</span> ?][? if psl_l_in_government = 1 : <span style="color: #66BB6A;">In Government</span> ?][? if psl_l_toleration = 1 : <span style="color: #FFB74D;">Toleration</span> ?] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#179900;'> </div> !} **PSL-**: {!</td><td>!} [+ psl_w_sj +]% {!</td><td>!} [? if psl_w_in_government = 0 : <span style="color: #D42F2F;">Opposition</span> ?][? if psl_w_in_government = 1 : <span style="color: #66BB6A;">In Government</span> ?][? if psl_w_toleration = 1 : <span style="color: #FFB74D;">Toleration</span> ?] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#3A6538;'> </div> !} **PSL-**: {!</td><td>!} [+ psl_p_sj +]% {!</td><td>!} [? if psl_p_in_government = 0 : <span style="color: #D42F2F;">Opposition</span> ?][? if psl_p_in_government = 1 : <span style="color: #66BB6A;">In Government</span> ?][? if psl_p_toleration = 1 : <span style="color: #FFB74D;">Toleration</span> ?] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#E3AF34;'> </div> !} **BMN**: {!</td><td>!} [+ bmn_sj +]% {!</td><td>!} [? if bmn_in_government = 0 : <span style="color: #D42F2F;">Opposition</span> ?][? if bmn_in_government = 1 : <span style="color: #66BB6A;">In Government</span> ?][? if bmn_toleration = 1 : <span style="color: #FFB74D;">Toleration</span> ?] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#312E99;'> </div> !} **ChZJN**: {!</td><td>!} [+ chzjn_sj_display +]% {!</td><td>!} {!</td></tr>!}
+
+{!<tr><td style="padding-left:26px;">!}- **ZLN**: {!</td><td>!} [+ zln_sj +]% {!</td><td>!} [? if zln_in_government = 0 : <span style="color: #D42F2F;">Opposition</span> ?][? if zln_in_government = 1 : <span style="color: #66BB6A;">In Government</span> ?][? if zln_toleration = 1 : <span style="color: #FFB74D;">Toleration</span> ?] {!</td></tr>!}
+
+{!<tr><td style="padding-left:26px;">!}- **PSChD**: {!</td><td>!} [+ pschd_sj +]% {!</td><td>!} [? if pschd_in_government = 0 : <span style="color: #D42F2F;">Opposition</span> ?][? if pschd_in_government = 1 : <span style="color: #66BB6A;">In Government</span> ?][? if pschd_toleration = 1 : <span style="color: #FFB74D;">Toleration</span> ?] {!</td></tr>!}
+
+{!<tr><td style="padding-left:26px;">!}- **Other parties**: {!</td><td>!} [+ otherright_sj +]% {!</td><td>!} [? if otherright_in_government = 0 : <span style="color: #D42F2F;">Opposition</span> ?][? if otherright_in_government = 1 : <span style="color: #66BB6A;">In Government</span> ?][? if otherright_toleration = 1 : <span style="color: #FFB74D;">Toleration</span> ?] {!</td></tr>!}
+
+{!<tr><td><div class="box" style='background-color:#909090;'> </div> !} **Other**: {!</td><td>!} [+ other_sj +]% {!</td><td>!} [? if other_in_government = 0 : <span style="color: #D42F2F;">Opposition</span> ?][? if other_in_government = 1 : <span style="color: #66BB6A;">In Government</span> ?][? if other_toleration = 1 : <span style="color: #FFB74D;">Toleration</span> ?] {!</td></tr>!}
+{!</table>!}
 
 [? if year >= 1923 : <div style="text-align: center;">**Senate**</div>
 {!<svg id="senat_display" style="width: 500px; height: 250px;"> </svg>!}
 
-<div style="text-align: center;">[? if (right_sn > left_sn) and (right_sn > center_sn) : The Senat is dominated by the Right. ?][? if (left_sn > right_sn) and (left_sn > center_sn) : The Senat is dominated by the Left. ?][? if (center_sn >= right_sn) and (center_sn >= left_sn) : The Senat is dominated by the Centrists.?]</div>?]
-@actions
+<div style="text-align: center;">[? if right_dominant_sn : The Senat is dominated by the right. ?][? if left_dominant_sn : The Senat is dominated by the left. ?][? if center_dominant_sn : The Senat is dominated by the centrists. ?]</div> ?]
 
-= Actions
+@cabinet
 
-Plotting Stuff
+= Cabinet
+
+Prime Minister: [+ prime_minister +] ([+ prime_minister_party +])
+
+Labor Minister: [+ labor_minister +] ([+ labor_minister_party +])
+
+Economic Minister: [+ economic_minister +] ([+ economic_minister_party +])
+
+Finance Minister: [+ finance_minister +] ([+ finance_minister_party +])
+
+Agriculture Minister: [+ agriculture_minister +] ([+ agriculture_minister_party +])
+
+Foreign Minister: [+ foreign_minister +] ([+ foreign_minister_party +])
+
+Interior Minister: [+ interior_minister +] ([+ interior_minister_party +])
+
+Military Minister: [+ military_minister +] ([+ military_minister_party +])
+
+Justice Minister: [+ justice_minister +] ([+ justice_minister_party +])
+
+Education Minister: [+ education_minister +] ([+ education_minister_party +])
