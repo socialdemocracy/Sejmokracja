@@ -76,26 +76,26 @@ const tooltipList = [{
     },
     {
     searchString: "ChZJN",
-    explanationText: "<img src=img/ChZJN.webp> Chrześcijański Związek Jedności Narodowej </br> Chjena </br> Christian Union of National Unity"
+    explanationText: "<img src=img/ChZJN.webp> Chrześcijański Związek Jedności Narodowej </br></br> Chjena </br></br> Christian Union of National Unity"
     },
     {
     searchString: "BMN",
-    explanationText: "<img src=img/ChZJN.webp> Blok Mniejszości Narodowych </br> Bloc Of National Minorities"
+    explanationText: "<img src=img/ChZJN.webp> Blok Mniejszości Narodowych </br></br> Bloc Of National Minorities"
     },
     {
     searchString: "PSChD",
-    explanationText: "<img src=img/ChZJN.webp> Polskie Stronnictwo Chrześcijańskiej Demokracji </br> Polish Christian Democratic Party"
+    explanationText: "<img src=img/ChZJN.webp> Polskie Stronnictwo Chrześcijańskiej Demokracji </br></br> Polish Christian Democratic Party"
     },
     {
     searchString: "Other Parties",
-    explanationText: "<img src=img/ChZJN.webp> Christian National Agricultural Party </br> National Christian People's Party"
+    explanationText: "<img src=img/ChZJN.webp> Christian National Agricultural Party </br></br> National Christian People's Party"
     },
     {
     searchString: "Others",
-    explanationText: "<img src=img/ChZJN.webp> Folkspartei </br> Union of Jewish National Parties in Lesser Poland </br> Polish Center </br> Radical Peasant Party"
+    explanationText: "<img src=img/ChZJN.webp> Folkspartei </br></br> Polish Center </br></br> Radical Peasant Party"
     },
     {
     searchString: "ZLN",
-    explanationText: "<img src=img/zln.webp> Związek Ludowo-Narodowy </br> Popular National Union"
+    explanationText: "<img src=img/zln.webp> Związek Ludowo-Narodowy </br></br> Popular National Union"
     },
 ];
