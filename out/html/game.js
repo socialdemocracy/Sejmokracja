@@ -211,8 +211,58 @@
             var relationText = getRelationshipText(Q.kpp_relation);
             return baseTooltip.explanationText + '<br>Relation: ' + relationText;
         }
+      
+        if (searchString === 'NPR' && Q.npr_relation !== undefined) {
+            var relationText = getRelationshipText(Q.npr_relation);
+            return baseTooltip.explanationText + '<br>Relation: ' + relationText;
+        }
+            
+        if (searchString === 'PSL-L' && Q.psl_l_relation !== undefined) {
+            var relationText = getRelationshipText(Q.psl_l_relation);
+            return baseTooltip.explanationText + '<br>Relation: ' + relationText;
+        }
+                  
+        if (searchString === 'PSL-W' && Q.psl_w_relation !== undefined) {
+            var relationText = getRelationshipText(Q.psl_w_relation);
+            return baseTooltip.explanationText + '<br>Relation: ' + relationText;
+        }
 
-    return baseTooltip.explanationText;
+        if (searchString === 'PSL-P' && Q.psl_p_relation !== undefined) {
+            var relationText = getRelationshipText(Q.psl_p_relation);
+            return baseTooltip.explanationText + '<br>Relation: ' + relationText;
+        }
+      
+        if (searchString === 'BMN' && Q.bmn_relation !== undefined) {
+            var relationText = getRelationshipText(Q.bmn_relation);
+            return baseTooltip.explanationText + '<br>Relation: ' + relationText;
+        }
+            
+        if (searchString === 'ChZJN' && Q.chzjn_relation !== undefined) {
+            var relationText = getRelationshipText(Q.chzjn_relation);
+            return baseTooltip.explanationText + '<br>Relation: ' + relationText;
+        }
+            
+        if (searchString === 'PSChD' && Q.pschd_relation !== undefined) {
+            var relationText = getRelationshipText(Q.pschd_relation);
+            return baseTooltip.explanationText + '<br>Relation: ' + relationText;
+        }
+                  
+        if (searchString === 'Other Parties' && Q.other_right_relation !== undefined) {
+            var relationText = getRelationshipText(Q.other_right_relation);
+            return baseTooltip.explanationText + '<br>Relation: ' + relationText;
+        }
+                        
+        if (searchString === 'Other' && Q.other_relation !== undefined) {
+            var relationText = getRelationshipText(Q.other_relation);
+            return baseTooltip.explanationText + '<br>Relation: ' + relationText;
+        }
+                              
+        if (searchString === 'Others' && Q.other_relation !== undefined) {
+            var relationText = getRelationshipText(Q.other_relation);
+            return baseTooltip.explanationText + '<br>Relation: ' + relationText;
+        }
+
+      return baseTooltip.explanationText;
 
     }
 
