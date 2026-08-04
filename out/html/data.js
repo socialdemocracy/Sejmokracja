@@ -39,10 +39,6 @@ const colourList = [{
         style: "color: #A0A0E0; font-weight: bold;"
    },
     {
-        word: "Other",
-        style: "color: #909090; font-weight: bold;"
-   },
-    {
         word: "Others",
         style: "color: #909090; font-weight: bold;"
    },
@@ -60,7 +56,43 @@ const tooltipList = [{
     },
     {
     searchString: "KPP",
-    explanationText: "<img src=img/kpp.jpg.png> Komunistyczna Partia Polski </br> Communist Party Of Poland"
+    explanationText: "<img src=img/kpp.webp> Komunistyczna Partia Polski </br> Communist Party Of Poland"
+    },
+    {
+    searchString: "NPR",
+    explanationText: "<img src=img/npr.webp> Narodowa Partia Robotnicza </br> National Worker's Party"
+    },
+    {
+    searchString: "PSL-L",
+    explanationText: "<img src=img/psl_l2.webp> Polskie Stronnictwo Ludowe - Lewica </br> Polish People's Party - Lewica"
+    },
+    {
+    searchString: "PSL-P",
+    explanationText: "<img src=img/psl_p.webp> Polskie Stronnictwo Ludowe - Piast </br> Polish People's Party - Piast"
+    },
+    {
+    searchString: "PSL-W",
+    explanationText: "<img src=img/psl_w.webp> Polskie Stronnictwo Ludowe - Wyzwolenie </br> Polish People's Party - Wyzwolenie"
+    },
+    {
+    searchString: "ChZJN",
+    explanationText: "<img src=img/ChZJN.webp> Chrześcijański Związek Jedności Narodowej </br> Chjena </br> Christian Union of National Unity"
+    },
+    {
+    searchString: "BMN",
+    explanationText: "<img src=img/ChZJN.webp> Blok Mniejszości Narodowych </br> Bloc Of National Minorities"
+    },
+    {
+    searchString: "PSChD",
+    explanationText: "<img src=img/ChZJN.webp> Polskie Stronnictwo Chrześcijańskiej Demokracji </br> Polish Christian Democratic Party"
+    },
+    {
+    searchString: "Other Parties",
+    explanationText: "<img src=img/ChZJN.webp> Christian National Agricultural Party </br> National Christian People's Party"
+    },
+    {
+    searchString: "Others",
+    explanationText: "<img src=img/ChZJN.webp> Folkspartei </br> Union of Jewish National Parties in Lesser Poland </br> Polish Center </br> Radical Peasant Party"
     },
     {
     searchString: "ZLN",
