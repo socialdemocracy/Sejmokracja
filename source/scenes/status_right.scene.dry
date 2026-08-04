@@ -1,49 +1,56 @@
 title: Inter-politics
 new-page: true
 is-special: true
-on-display: {!
-data_sj = Q.sj_display;
-if (window && d3) {
-    var data_sj = Q.sj_display;
-var width = 500; 
-    var height = 500;
-    var screenWidth = document.getElementById('qualities').offsetWidth;
-    if (screenWidth < width - 50) {
-        width = screenWidth - 50; 
-        height = width;
-        document.getElementById("sejm_display").style.height = screenWidth/2 + "px";
-    } 
+on-arrival: {!
+var _newData = [];
+    function _addP(id, legend, seats) {
+        if (seats && seats > 0) _newData.push({ id: id, legend: legend, name: legend, seats: seats });
+    }
+    _addP('kpp', "KPP", Q.kpp_seating);
+    _addP('pps', 'PPS', Q.pps_seating);
+    _addP('npr', 'NPR', Q.npr_seating);
+    _addP('psl_l', 'PSL-L', Q.psl_l_seating);
+    _addP('psl_w', 'PSL-W', Q.psl_w_seating);
+    _addP('psl_p',  'PSL-P',  Q.psl_p_seating);
+    _addP('bmn', 'BMN', Q.bmn_seating);
+    _addP('chzjn', 'ChZJN', Q.chzjn_seating);
+    _addP('zln', 'ZLN', Q.zln_seating);
+    _addP('pschd', 'PSChD', Q.pschd_seating);
+    _addP('otherright', 'Other Parties', Q.otherright_seating);
+    _addP('other','Other',Q.other_seating);
 
-    var parliament_sj_display = d3.parliament();
-    parliament_sj_display.width(width).height(height).innerRadiusCoef(0.4);
-    parliament_sj_display.enter.fromCenter(true).smallToBig(true);
-    parliament_sj_display.exit.toCenter(false).bigToSmall(true);
-    d3.select("#sejm_display").datum(data_sj).call(parliament_sj_display);
-}
-data_sn = Q.sn_display;
-if (window && d3) {
-    var data_sn = Q.sn_display;
-var width = 500; 
-    var height = 500;
-    var screenWidth = document.getElementById('content').offsetWidth;
-    if (screenWidth < width - 50) {
-        width = screenWidth - 50; 
-        height = width;
-        document.getElementById("senat_display").style.height = screenWidth/2 + "px";
-    } 
-
-    var parliament_sn_display = d3.parliament();
-    parliament_sn_display.width(width).height(height).innerRadiusCoef(0.4);
-    parliament_sn_display.enter.fromCenter(true).smallToBig(true);
-    parliament_sn_display.exit.toCenter(false).bigToSmall(true);
-    d3.select("#senat_display").datum(data_sn).call(parliament_sn_display);
-}
+    var _newSig = JSON.stringify(_newData.map(function(p){ return p.id + p.seats; }));
+    var _changed = (_newSig !== window._parliSig);
+    window._parliData = _newData;
+    if (_changed) {
+        window._parliSig = _newSig;
+        window._parliAnimate = true;
+    } else {
+        window._parliAnimate = false;
+    }
 !}
 
 = Parliament
 
 <div style="text-align: center;">**Sejm**</div>
-{!<svg id="sejm_display" style="width: 500px; height: 250px;"> </svg>!}
+
+{!<svg id="status_parliament" style="width: 100%; display: block;"></svg>
+<script>
+(function() {
+    if (!d3 || !d3.parliament || !window._parliData || window._parliData.length === 0) return;
+    var el = document.getElementById('status_parliament');
+    if (!el) return;
+    var w = el.parentElement.offsetWidth || 220;
+    el.setAttribute('width', w);
+    el.setAttribute('height', Math.round(w * 0.55));
+    var parl = d3.parliament();
+    parl.width(w).height(Math.round(w * 0.55)).innerRadiusCoef(0.4);
+    var animate = window._parliAnimate;
+    parl.enter.fromCenter(animate).smallToBig(animate);
+    parl.exit.toCenter(animate).bigToSmall(animate);
+    d3.select('#status_parliament').datum(window._parliData).call(parl);
+})();
+</script>!}
 
 Government Mandate: [+ government_mandate +]/100%
 
