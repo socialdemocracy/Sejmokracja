@@ -19,7 +19,7 @@ const tooltipList = [{
     explanationText: "<img src=img/pps.webp> Polska Partia Socjalistyczna </br> Polish Socialist Party"
     },
     {
-    searchString: "PSI",
+    searchString: "KPP",
     explanationText: "<img src=img/kpp.jpg.png> Komunistyczna Partia Polski </br> Communist Party Of Poland"
     },
     {
